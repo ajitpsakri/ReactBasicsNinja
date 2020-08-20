@@ -21,8 +21,19 @@
   <script type="text/babel">
     // "class App extends" means creating a class which is a copy of Component class 
     class App extends React.Component {
+      state = {
+        name: 'ajit',
+        age: 20,
+      }
       render() {
-        return <div>hey bro</div>;
+        // go to state object and name and age variable and fectch the data and render it 
+        return (<div>
+
+          <h1>My name is {this.state.name}</h1>
+
+          <p>and my age is {this.state.age}</p>
+        </div>);
+
       }
     }
     // Render at DOM element named(through id) app
