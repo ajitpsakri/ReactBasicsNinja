@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- babel code snippet helps to compile to browser or babel make javascript browser compatable -->
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- importing react and react dom elements through CDN or get two links from react docs and start creating react app  -->
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    // "class App extends" means creating a class which is a copy of Component class 
+    class App extends React.Component {
+      render() {
+        return <div>hey bro</div>;
+      }
+    }
+    // Render at DOM element named(through id) app
+    ReactDOM.render(<App />, document.getElementById("app"));
+  </script>
+</body>
+
+</html>
