@@ -26,9 +26,12 @@
         age: 10,
       }
       // we are passing an event(mouse click) to a function as a parameter
-      handleClick(e) {
+      handleClick = (e) => {
         // e.target is like saying which element is event targeted 
         console.log(e.target);
+
+        console.log(this.state.name)
+        //if i have to render this.state i have to use arrow functions
       }
       // we are passing an event(mouse hover) and logging on console event
       handleMouseOver(e) {
@@ -38,9 +41,18 @@
       handleCopy(e) {
         console.log('yes your right lets learn coding and create future');
       }
+
+      ChangeNameAge = (e) => {
+        this.setState({ //so when event is fired change the state object(next time ill just say state)
+          name: 'amit',
+          age: 18,
+        })
+      }
       render() {
         // go to state object and fetch name and age variable and fectch the data and render it 
         return (<div>
+
+          <button onClick={this.ChangeNameAge}>Change every thing to Amit</button>
           <h1>My name is {this.state.name}</h1>
 
           <p>and my age is {this.state.age}</p>
@@ -51,6 +63,7 @@
           <button onMouseOver={this.handleMouseOver}>Hover on me(Amit may pop up)</button>
 
           <p onCopy={this.handleCopy}>it is time india took some risk isn't it</p>
+
 
 
         </div>);
