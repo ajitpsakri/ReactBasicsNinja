@@ -1,78 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- babel code snippet helps to compile to browser or babel make javascript browser compatable -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- babel code snippet helps to compile to browser or babel make javascript browser compatable -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- importing react and react dom elements through CDN or get two links from react docs and start creating react app  -->
 
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- importing react and react dom elements through CDN or get two links from react docs and start creating react app  -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
 
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Document</title>
+  </head>
 
-  <title>Document</title>
-</head>
+  <body>
+    <div id="app"></div>
 
-<body>
-  <div id="app"></div>
+    <script type="text/babel">
+      // "class App extends" means creating a class which is a copy of Component class
+      class App extends React.Component {
+        state = {
+          name: "Ajit",
+          age: 10,
+        };
+        ChangeName = (e) => {
+          this.setState({
+            name: e.target.value, //change the value of name to what is entered by user
+          });
+        };
 
-  <script type="text/babel">
-    // "class App extends" means creating a class which is a copy of Component class 
-    class App extends React.Component {
-      state = {
-        name: 'ajit',
-        age: 10,
+        handleSubmit = (e) => {
+          //default is to load when name is changed so to prevent it this is done
+          e.preventDefalut();
+        };
+        render() {
+          return (
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" onChange={this.ChangeName} />
+                <button>Submit</button>
+              </form>
+              <h1>My name is {this.state.name}</h1>
+            </div>
+          );
+        }
       }
-      // we are passing an event(mouse click) to a function as a parameter
-      handleClick = (e) => {
-        // e.target is like saying which element is event targeted 
-        console.log(e.target);
-
-        console.log(this.state.name)
-        //if i have to render this.state i have to use arrow functions
-      }
-      // we are passing an event(mouse hover) and logging on console event
-      handleMouseOver(e) {
-        console.log(e);
-      }
-      // we are passing an event(when some one copies text at target elemet) and logging in console
-      handleCopy(e) {
-        console.log('yes your right lets learn coding and create future');
-      }
-
-      ChangeNameAge = (e) => {
-        this.setState({ //so when event is fired change the state object(next time ill just say state)
-          name: 'amit',
-          age: 18,
-        })
-      }
-      render() {
-        // go to state object and fetch name and age variable and fectch the data and render it 
-        return (<div>
-
-          <button onClick={this.ChangeNameAge}>Change every thing to Amit</button>
-          <h1>My name is {this.state.name}</h1>
-
-          <p>and my age is {this.state.age}</p>
-
-
-          <button onClick={this.handleClick}>where is this clicked</button>
-
-          <button onMouseOver={this.handleMouseOver}>Hover on me(Amit may pop up)</button>
-
-          <p onCopy={this.handleCopy}>it is time india took some risk isn't it</p>
-
-
-
-        </div>);
-
-      }
-    }
-    // Render at DOM element named(through id) app
-    ReactDOM.render(<App />, document.getElementById("app"));
-  </script>
-</body>
-
+      // Render at DOM element named(through id) app
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
 </html>
